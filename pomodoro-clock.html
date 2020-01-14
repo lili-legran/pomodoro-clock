@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./pomodoro-clock.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
+  <title>Pomodoro clock</title>
+</head>
+<body>
+  <h1>Pomodoro Clock</h1>
+  <div class="pomodoro">
+    <div class="pomodoro__box">
+      <div class="pomodoro__description">Work Time!</div>
+      <did class="pomodoro__clock">25:00</did>
+    </div>
+    <div class="pomodoro__buttons">
+      <button class="pomodoro__button-start">START</button>
+      <button class="pomodoro__button-stop">STOP</button>
+    </div>
+    <div class="pomodoro__settings">
+      <div class="pomodoro__session">
+        <p>Session length</p>
+        <div class="pomodoro__session-value-row">
+          <span class="pomodoro__session-reduce">-</span>
+          <div class="pomodoro__session-value">25</div>
+          <span class="pomodoro__session-increase">+</span>
+        </div>
+      </div>
+      <div class="pomodoro__break">
+        <p>Break length</p>
+        <div class="pomodoro__break-value-row">
+          <span class="pomodoro__break-reduce">-</span>
+          <div class="pomodoro__break-value">5</div>
+          <span class="pomodoro__break-increase">+</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-me">
+    <a href="https://github.com/lili-legran" class="about-me__link">GitHub</a>
+  </div>
+  <script src='./pomodoro-clock.js'></script>
+</body>
+</html>
