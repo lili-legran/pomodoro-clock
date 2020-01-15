@@ -8,9 +8,11 @@ const pomodoroTimer = document.querySelector('.pomodoro__clock');
 const startButton = document.querySelector('.pomodoro__button-start');
 const stopButton = document.querySelector('.pomodoro__button-stop');
 let sumSeconds = 0;
+let isSession = true;
+let timer;
 
-const countSeconds = () => {
-  sumSeconds = Number(sessionValue.innerHTML) * 60;
+const countSeconds = (value) => {
+  sumSeconds = Number(value.innerHTML) * 60;
 }
 
 const increaseSessionValue = () => {
@@ -22,7 +24,7 @@ const increaseSessionValue = () => {
     sessionIncrease.classList.add('pomodoro__disabled');
   }
   sessionValue.innerHTML = newSessionValue;
-  countSeconds();
+  countSeconds(sessionValue);
   changeTimerLength();
 }
 
@@ -30,12 +32,12 @@ const reduceSessionValue = () => {
   let newSessionValue = Number(sessionValue.innerHTML);
   sessionIncrease.classList.remove('pomodoro__disabled');
   newSessionValue--;
-  if (newSessionValue <= 0) {
-    newSessionValue = 0;
+  if (newSessionValue <= 1) {
+    newSessionValue = 1;
     sessionReduce.classList.add('pomodoro__disabled');
   }
   sessionValue.innerHTML = newSessionValue;
-  countSeconds();
+  countSeconds(sessionValue);
   changeTimerLength();
 }
 
@@ -54,8 +56,8 @@ const reduceBreakValue = () => {
   let newBreakValue = Number(breakValue.innerHTML);
   breakIncrease.classList.remove('pomodoro__disabled');
   newBreakValue--;
-  if (newBreakValue <= 0) {
-    newBreakValue = 0;
+  if (newBreakValue <= 1) {
+    newBreakValue = 1;
     breakReduce.classList.add('pomodoro__disabled');
   }
   breakValue.innerHTML = newBreakValue;
@@ -66,6 +68,29 @@ const getTimerValue = () => {
   let minutes = Math.floor(sumSeconds / 60);
   let seconds = sumSeconds % 60;
   setTimerValue(minutes, seconds); 
+  if (sumSeconds === 0) {
+    let value;
+    if (isSession) {
+      value = breakValue;
+      changeDescription('Relax!', true);
+    } else {
+      value = sessionValue;
+      changeDescription('Work Time!', false);
+    }
+    countSeconds(value);
+    isSession = !isSession;
+  }
+}
+
+const changeDescription = (message, isRelax) => {
+  let description = document.querySelector('.pomodoro__description');
+  let pomodoroBox = document.querySelector('.pomodoro__box');
+  description.innerHTML = message;
+  if (isRelax) {
+    pomodoroBox.classList.add('pomodoro__change-background');
+  } else {
+    pomodoroBox.classList.remove('pomodoro__change-background');
+  }
 }
 
 const setTimerValue = (min, sec) => {
@@ -79,7 +104,6 @@ const changeTimerLength = () => {
   pomodoroTimer.innerHTML = sessionValue.innerHTML + ':00';
 }
 
-let timer;
 const startTimer = () => {
   disableChangeValue();
   timer = setInterval(getTimerValue, 1000);
@@ -108,7 +132,7 @@ const enableChangeValue = () => {
   breakReduce.style.visibility = 'visible';
 }
 
-countSeconds();
+countSeconds(sessionValue);
 changeTimerLength();
 startButton.addEventListener('click', startTimer);
 stopButton.addEventListener('click', stopTimer);
