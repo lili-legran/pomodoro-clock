@@ -92,6 +92,7 @@ h1 {
     }
     span {
       cursor: pointer;
+      user-select: none;  
     }
   }
   &__session-value-row,
@@ -101,6 +102,11 @@ h1 {
   &__session-value,
   &__break-value {
     margin: 0 10px;
+    width: 35px;
+    text-align: center;
+  }
+  &__disabled {
+    color: #ac9d9d;
   }
 }
 
