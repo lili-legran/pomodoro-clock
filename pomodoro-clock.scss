@@ -11,21 +11,21 @@
 
 body {
   @include flex-column-center();
-  font-family: 'Acme', sans-serif;
+  font-family: 'Merienda', cursive;
   justify-content: space-between;
   width: 100vw;
   height: 100vh;
-  background: #efebbf;
+  background: #dfeff1;
 }
 
 h1 {
   font-size: 4em;
-  background: #8bf58b;
+  background: #9ccecd;
   width: 100%;
   padding: 50px 0;
   text-align: center;
   text-shadow: 3px 3px 3px #310606;
-  color: #980d0d;
+  color: #ef6464;
 }
 
 .pomodoro {
@@ -35,13 +35,13 @@ h1 {
   &__box {
     @include flex-column-center();
     justify-content: center;
-    background: #ea4747;
+    background: #ff8585;
     width: 280px;
     height: 270px;
     border-radius: 50%;
     font-size: 2.5em;
     margin: 70px 0 50px 0;
-    box-shadow: 0 0 5px 5px #751111;
+    box-shadow: 0 0 5px 5px #d04b4b;
     transition: all 1s;
   }
   &__description {
@@ -60,20 +60,20 @@ h1 {
   }
   &__button-start,
   &__button-stop {
-    font-family: 'Acme', sans-serif;
+    font-family: 'Merienda', cursive;
     margin: 0 40px;
     width: 150px;
     height: 40px;
     border: none;
     border-radius: 5px;
-    background: #30c56e;
+    background: #85c6cb;
     font-size: 1.3em;
-    box-shadow: 0 0 3px 3px #7b813c;
+    box-shadow: 0 0 3px 3px #598285;
     transition: all .3s;
     cursor: pointer;
     outline: none;
     &:hover {
-      box-shadow: 0 0 7px 7px #7b813c;
+      box-shadow: 0 0 7px 7px #598285;
     }
   }
   &__settings {
@@ -110,14 +110,14 @@ h1 {
     color: #ac9d9d;
   }
   &__change-background { 
-    background: #dde65f;
-    box-shadow: 0 0 5px 5px #9fa734;
+    background: #c3fab9;
+    box-shadow: 0 0 5px 5px #698664;
   }
 }
 
 .about-me {
   padding: 10px 0;
-  background: #8bf58b;
+  background: #9ccecd;
   width: 100%;
   text-align: center;
   &__link {
